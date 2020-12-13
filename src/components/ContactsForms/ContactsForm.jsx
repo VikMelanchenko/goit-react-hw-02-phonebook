@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import shortid from 'shortid';
 
 import s from './ContactsForm.module.scss';
 
@@ -8,15 +9,32 @@ class ContactsForms extends Component {
     phone: '',
   };
 
+  nameInputId = shortid.generate();
+  phoneInputId = shortid.generate();
+
+  // добавление значения в input
   onHandleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
 
+  // сабмит формы
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(this.state);
+
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ name: '', phone: '' });
+  };
+
   render() {
     return (
-      <form className={s.form__item}>
-        <label>
+      <form className={s.form__item} onSubmit={this.handleSubmit}>
+        <label htmlFor={this.nameInputId}>
           Name
           <input
             className={s.input__item}
@@ -27,7 +45,7 @@ class ContactsForms extends Component {
             onChange={this.onHandleChange}
           ></input>
         </label>
-        <label>
+        <label htmlFor={this.phoneInputId}>
           Pnone number
           <input
             className={s.input__item}

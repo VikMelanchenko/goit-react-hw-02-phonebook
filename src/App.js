@@ -8,11 +8,15 @@ class App extends Component {
     name: '',
   };
 
+  formSubmitHandler = (data) => {
+    console.log(data);
+  };
+
   render() {
     return (
       <>
         <h1>Phonebook</h1>
-        <ContactsForms />
+        <ContactsForms onSubmit={this.formSubmitHandler} />
       </>
     );
   }
