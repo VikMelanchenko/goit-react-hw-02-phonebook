@@ -20,13 +20,20 @@ class ContactsForms extends Component {
 
   // сабмит формы
   handleSubmit = (e) => {
+    // страница не перезагружается
     e.preventDefault();
+
+    const { name, phone } = this.state;
+    const { addContact } = this.props;
+
+    addContact({ name, phone });
 
     console.log(this.state);
 
     this.reset();
   };
 
+  // очистка input
   reset = () => {
     this.setState({ name: '', phone: '' });
   };
