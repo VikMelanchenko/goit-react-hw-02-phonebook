@@ -1,5 +1,4 @@
 import s from '../ContactsForms/ContactsForm.module.scss';
-
 import ContactListItem from '../ContactListItem/ContactListItem';
 
 // список добавленных контактов и удаление

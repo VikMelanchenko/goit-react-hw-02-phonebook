@@ -6,7 +6,7 @@ import s from './ContactsForm.module.scss';
 class ContactsForms extends Component {
   state = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   nameInputId = shortid.generate();
@@ -23,10 +23,10 @@ class ContactsForms extends Component {
     // страница не перезагружается
     e.preventDefault();
 
-    const { name, phone } = this.state;
+    const { name, number } = this.state;
     const { addContact } = this.props;
 
-    addContact({ name, phone });
+    addContact({ name, number });
 
     console.log(this.state);
 
@@ -35,7 +35,7 @@ class ContactsForms extends Component {
 
   // очистка input
   reset = () => {
-    this.setState({ name: '', phone: '' });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
@@ -57,8 +57,8 @@ class ContactsForms extends Component {
           <input
             className={s.input__item}
             type="tel"
-            name="phone"
-            value={this.state.phone}
+            name="number"
+            value={this.state.number}
             placeholder="enter phone number"
             onChange={this.onHandleChange}
           ></input>

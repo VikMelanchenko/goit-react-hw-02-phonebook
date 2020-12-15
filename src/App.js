@@ -17,6 +17,7 @@ class App extends Component {
     ],
     filter: '',
     name: '',
+    number: '',
   };
 
   // сабмит формы
@@ -24,11 +25,16 @@ class App extends Component {
     console.log(data);
   };
 
-  // добавление нового контакта
+  // добавление нового контакта + метод проверки на существующий контакт
+
   addNewContact = (newContact) =>
-    this.setState(({ contacts }) => ({
-      contacts: [...contacts, newContact],
-    }));
+    this.state.contacts.find((contact) => contact.name === newContact.name)
+      ? alert(`${newContact.name} is already in contacts`)
+      : this.setState((prevState) => {
+          return {
+            contacts: [...prevState.contacts, newContact],
+          };
+        });
 
   // удаление контакта из списка
 
@@ -51,9 +57,6 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-
-  // добавить метод проверки контакта на уникальность + проверку на существующий контакт
-  // ---------------------------------------
 
   render() {
     const { filter } = this.state;
