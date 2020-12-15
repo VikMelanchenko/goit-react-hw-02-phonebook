@@ -12,9 +12,8 @@ const Contact = ({ id, name, phone, onRemoveContact }) => {
   );
 };
 
-// список добавленных контактов и удаление + проверить на валидность, есть ли уже такой контакт (при добавлении)
+// список добавленных контактов и удаление
 const Contacts = ({ contacts, onRemoveContact }) => {
-  if (contacts.length === 0) return null;
   return (
     <ul className={s.contact__list}>
       {contacts.map((contact) => (
