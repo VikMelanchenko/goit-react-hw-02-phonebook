@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import ContactsForms from './components/ContactsForms/ContactsForm';
 
-import Contacts from './components/Contacts/Contacts';
+import ContactList from './components/ContactList/ContactList';
 
 import Filter from './components/Filter/Filter';
 
@@ -64,7 +64,7 @@ class App extends Component {
         <ContactsForms addContact={this.addNewContact} />
         <h1>Contacts</h1>
         <Filter value={filter} onChange={this.onChangeFilter} />
-        <Contacts
+        <ContactList
           contacts={visibleContacts}
           onRemoveContact={this.removeContact}
         />
